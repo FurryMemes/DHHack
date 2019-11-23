@@ -27,10 +27,8 @@ def get_posts_data(group_id):
             except:
                 # print('bad_error')
                 pass
-            z = 0
             for post in range(len(posts['items'])):
                 if 'geo' in posts['items'][post].keys():
-                    z += 1
                     geo = posts['items'][post]['geo']
                     points.append([geo['coordinates'].split()[0], geo['coordinates'].split()[1]])
                     # print(points)
