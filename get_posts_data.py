@@ -35,6 +35,6 @@ def get_posts_data(group_id):
                     points.append([geo['coordinates'].split()[0], geo['coordinates'].split()[1]])
                     # print(points)
     return points
-get_posts_data(80799846)
+
 if __name__ == "main":
     get_posts_data(80799846)
