@@ -2,8 +2,9 @@
 import vk_api
 
 def get_id_users():
-    idd = '1f21b45de665984483f3f48ea811cb27be1d330d1afdef5ce06e4246efcf46acff15f8b388807d6c29cbb'
+    idd = 'f58f9323564c7f94a25546fd2c30ba07619d2695cebcb65acb0e004154f0891de989b5a09a621db83a143'
     vk_session = vk_api.VkApi(token=idd)
-    print(vk_session.method('groups.getMembers', {'group_id': 80799846}))
+    return vk_session.method('groups.getMembers', {'group_id': 80799846})['items']
 
-get_id_users()
+if __name__ == '__main__':
+    print(get_id_users())
