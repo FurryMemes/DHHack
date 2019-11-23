@@ -11,4 +11,4 @@ def get_graph(tag):
         a[int(str(datetime.datetime.fromtimestamp(posts.created_time))[11:13])] += 1
     fig = plt.figure()
     graph1 = plt.plot([i for i in range(24)],a)
-    plt.show()
+    
