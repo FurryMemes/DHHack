@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FurryMemes</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet'/>
+    <style type="text/css">
+        .name{
+            position: absolute;
+            width: 297px;
+            height: 55px;
+            left: 98px;
+            top: 93px;
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 45px;
+            line-height: 55px;
+        /* identical to box height */
+
+            color: #000000;
+        }
+        .descrption {
+            position: absolute;
+            width: 404px;
+            height: 124px;
+            left: 98px;
+            top: 166px;
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 23px;
+            line-height: 28px;
+
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="name">FurryMemes</h1>
+        <p class="descrption">Найдите место обитания людей одной професии, для этого введите профессию этих людей в поле ниже</p>
+    </header>
+    <!--<div class="main">
+        <div id='map' style='width: 780px; height: 500px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWFzaGF0cmV0MjAwNiIsImEiOiJjazNia2c1amYwajNwM2NsZGpheHB1Y29mIn0.QegkEY39EJLAuB1Y_ba47A';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v10',
+                center: [37.6155600, 55.7522200],
+                zoom: 9
+            });
+        </script>
+        <button type="text" name="button">Технари</button>
+        <button type="text" name="button">Гуманитарий</button>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-success">Найти</button>
+        </form>
+    </div>
+    <footer>
+        <p>Проект сделан в рамках хакатона "DHack" компании "КРОК"</p>
+    </footer>-->
+</body>
+
+</html>
