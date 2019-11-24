@@ -14,5 +14,5 @@ def get_graph(tag):
     z = 0
     for posts in medias:
         a[int(str(datetime.datetime.fromtimestamp(posts.created_time))[11:13])] += 1
-        plt.scatter(z, a[z], marker='o', cmap='summer')
+        plt.scatter(z, a[z], marker='o', cmap='ocean')
         z += 1
