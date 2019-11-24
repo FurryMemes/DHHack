@@ -23,7 +23,6 @@ def get_posts_data(group_id):
                     z += 1
                     geo = posts['items'][post]['geo']
                     points.append([geo['coordinates'].split()[0], geo['coordinates'].split()[1]])
-                    # print(points)
 
             if z != 0:
                 try:
@@ -36,7 +35,7 @@ def get_posts_data(group_id):
                     if 'geo' in posts['items'][post].keys():
                         geo = posts['items'][post]['geo']
                         points.append([geo['coordinates'].split()[0], geo['coordinates'].split()[1]])
-                        # print(points)
+    print(len(points))
     return points
 
 get_posts_data(80799846)
