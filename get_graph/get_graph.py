@@ -1,5 +1,6 @@
 from igramscraper.instagram import Instagram
 import datetime
+import matplotlib.pyplot as plt
 
 def get_graph(tag):
     instagram = Instagram()
@@ -10,8 +11,11 @@ def get_graph(tag):
     a = []
     for i in range(24):
         a.append(0)
+    z = 0
     for posts in medias:
         a[int(str(datetime.datetime.fromtimestamp(posts.created_time))[11:13])] += 1
-    fig = plt.figure()
-    graph1 = plt.plot([i for i in range(24)],a)
-    
+    #fig = plt.figure()
+    #graph1 = plt.plot([i for i in range(24)],a)
+        plt.scatter(z, a[z], marker='o')
+        z += 1
+    plt.show(cmap="")
