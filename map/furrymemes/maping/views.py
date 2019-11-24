@@ -5,7 +5,7 @@ import vk_api
 import json
 
 def get_id_users(group):
-    idd = '1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb'
+    idd = '9f79d9a11e43730af251d10434201eefb9a665c637eba51e27466f6c4d7557c399484a80ca5aa29adb765'
     vk_session = vk_api.VkApi(token=idd)
     #print(vk_session.method('groups.getMembers', {'group_id': group}))
     try:
@@ -13,10 +13,9 @@ def get_id_users(group):
     except:
         return vk_session.method('groups.getMembers', {'group_id': 80799846})['items']
 
-
 def get_posts_data(group_id, count):
     users_id = get_id_users(group_id)
-    vk_session = vk_api.VkApi(token='1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb')
+    vk_session = vk_api.VkApi(token='9f79d9a11e43730af251d10434201eefb9a665c637eba51e27466f6c4d7557c399484a80ca5aa29adb765')
     points = []
 
     for i in range(min(1000, count)):
@@ -52,6 +51,8 @@ def get_posts_data(group_id, count):
                         # print(points)
     return points
 
+
+
 def arr_to_geojson(arr):
     d = {}
     for i in range(len(arr)):
@@ -66,7 +67,7 @@ def default_map(request):
     if request.method == "POST":
         form = GroupForm(request.POST)
         if form.is_valid():
-            points = arr_to_geojson(get_posts_data(request.POST.get('group_name'), request.POST.get('max_people')))
+            points = arr_to_geojson(get_posts_data(request.POST.get('group_name'), 50))
     else:
         form = GroupForm()
         points = {}

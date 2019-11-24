@@ -200,9 +200,9 @@
             <div>
                 <input type="id_group_name" id="id_group_name" class="form-people" placeholder="  Название группы" name="group_name">
             </div>
-            <div>
+            <!--<div>
                 <input type="id_max_people" id="id_max_people" class="form-people1" placeholder="  Количество людей для поиска" name="max_people">
-            </div>
+            </div>-->
             <button type="submit" class="submit-form">Найти</button>
         </form>
         <div id='map' class= "maping"></div>
@@ -214,15 +214,16 @@
             center: [37.6155600, 55.7522200],
             zoom: 9,
         });
-        function randColor() {
+        /*function randColor() {
             var r = Math.floor(Math.random() * (256)),
             g = Math.floor(Math.random() * (256)),
             b = Math.floor(Math.random() * (256));
             return '#' + r.toString(16) + g.toString(16) + b.toString(16);
             }
+        color = randColor()*/
         console.log(JSON.parse('{{ points|safe }}'));
         for (var i in JSON.parse('{{ points|safe }}')) {
-            var marker=new mapboxgl.Marker({color: randColor()})
+            var marker=new mapboxgl.Marker()
             .setLngLat([JSON.parse('{{ points|safe }}')[i]["longitude"], JSON.parse('{{ points|safe }}')[i]["latitude"]])
             .addTo(map);
         }
