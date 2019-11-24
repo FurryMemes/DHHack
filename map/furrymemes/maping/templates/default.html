@@ -40,6 +40,102 @@
 
             color: #000000;
         }
+        .find-people {
+            position: absolute;
+            width: 163px;
+            height: 28px;
+            left: 98px;
+            top: 414px;
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 23px;
+            line-height: 28px;
+            /* identical to box height */
+
+            color: #000000;
+        }
+        .form-people {
+            position: absolute;
+            width: 546px;
+            height: 38px;
+            left: 99px;
+            top: 474px;
+
+            background: rgba(196, 196, 196, 0.28);
+            opacity: 0.3;
+            border-radius: 20px;
+        }
+        .submit-form {
+            position: absolute;
+            width: 178px;
+            height: 43px;
+            left: 469px;
+            top: 531px;
+
+            background: rgba(196, 196, 196, 0.28);
+            border-radius: 20px;
+
+
+            /* Найти */
+
+            position: absolute;
+            /*width: 63px;
+            height: 23px;
+            left: 527px;
+            top: 541px;*/
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 19px;
+            line-height: 23px;
+
+            color: #000000;
+        }
+        .recomendation {
+            position: absolute;
+            width: 547px;
+            height: 37px;
+            left: 98px;
+            top: 600px;
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 23px;
+            line-height: 28px;
+
+            color: #000000;
+        }
+        .texnari {
+            position: absolute;
+            width: 549px;
+            height: 48px;
+            left: 98px;
+            top: 655px;
+
+            background: rgba(196, 196, 196, 0.28);
+            border-radius: 20px;
+        }
+        .gumanitariy {
+            position: absolute;
+            width: 549px;
+            height: 48px;
+            left: 98px;
+            top: 732px;
+
+            background: rgba(196, 196, 196, 0.28);
+            border-radius: 20px;
+        }
+        .maping {
+            position: absolute;
+            width: 759px;
+            height: 1024px;
+            left: 693px;
+            top: 0px;
+        }
     </style>
 </head>
 
@@ -48,28 +144,33 @@
         <h1 class="name">FurryMemes</h1>
         <p class="descrption">Найдите место обитания людей одной професии, для этого введите профессию этих людей в поле ниже</p>
     </header>
-    <!--<div class="main">
-        <div id='map' style='width: 780px; height: 500px;'></div>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoibWFzaGF0cmV0MjAwNiIsImEiOiJjazNia2c1amYwajNwM2NsZGpheHB1Y29mIn0.QegkEY39EJLAuB1Y_ba47A';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v10',
-                center: [37.6155600, 55.7522200],
-                zoom: 9
-            });
-        </script>
-        <button type="text" name="button">Технари</button>
-        <button type="text" name="button">Гуманитарий</button>
+    <div class="main">
+        <p class="find-people">Найти людей</p>
         <form method="POST">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit" class="btn btn-success">Найти</button>
+            <div>
+                <input type="id_group_name" id="id_group_name" class="form-people" placeholder="Название группы" name="group_name">
+            </div>
+            <button type="submit" class="submit-form">Найти</button>
         </form>
+        <p class="recomendation">Рекомендации для запросов</p>
+        <button type="text" name="button" class="texnari">Технари</button>
+        <button type="text" name="button" class="gumanitariy">Гуманитарий</button>
+        <div id='map' style='position: absolute; width: 759px; height: 1024px; left: 693px; top: 0px;'></div>
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFzaGF0cmV0MjAwNiIsImEiOiJjazNia2c1amYwajNwM2NsZGpheHB1Y29mIn0.QegkEY39EJLAuB1Y_ba47A';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10',
+            center: [- 77.03, 38.91],
+            zoom: 9,
+        });
+        for (int i = 0; i < {{ points }} .length(); i++) {
+            var marker=new mapboxgl.Marker()
+            .setLngLat([Number({{points}}[i]['latitude']), Number({{points}}[i]['longitude']]));
+            .addTo(map); }
+        </script>
     </div>
-    <footer>
-        <p>Проект сделан в рамках хакатона "DHack" компании "КРОК"</p>
-    </footer>-->
 </body>
 
 </html>
