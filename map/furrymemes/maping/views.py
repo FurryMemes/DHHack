@@ -13,15 +13,17 @@ def get_id_users(group):
     except:
         return vk_session.method('groups.getMembers', {'group_id': 80799846})['items']
 
-def get_posts_data(group_id):
+
+def get_posts_data(group_id, count):
     users_id = get_id_users(group_id)
     vk_session = vk_api.VkApi(token='1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb')
     points = []
-    for id in users_id:
+
+    for i in range(min(1000, count)):
         posts = {}
         tr = False
         try:
-            posts = vk_session.method('wall.get', {'owner_id': id, 'count': 25})
+            posts = vk_session.method('wall.get', {'owner_id': users_id[i], 'count': 25})
             tr = True
             # print('not_bad_error')
         except:
@@ -50,7 +52,6 @@ def get_posts_data(group_id):
                         # print(points)
     return points
 
-
 def arr_to_geojson(arr):
     d = {}
     for i in range(len(arr)):
@@ -65,7 +66,7 @@ def default_map(request):
     if request.method == "POST":
         form = GroupForm(request.POST)
         if form.is_valid():
-            points = arr_to_geojson(get_posts_data(request.POST.get('group_name')))
+            points = arr_to_geojson(get_posts_data(request.POST.get('group_name'), request.POST.get('max_people')))
     else:
         form = GroupForm()
         points = {}

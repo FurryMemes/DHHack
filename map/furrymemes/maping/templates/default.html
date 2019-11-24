@@ -16,7 +16,7 @@
             left: 98px;
             top: 93px;
 
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: bold;
             font-size: 45px;
@@ -32,7 +32,7 @@
             left: 98px;
             top: 166px;
 
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: normal;
             font-size: 23px;
@@ -47,7 +47,7 @@
             left: 98px;
             top: 414px;
 
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: 500;
             font-size: 23px;
@@ -70,7 +70,7 @@
 
             /* Найти */
 
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: 300;
             font-size: 19px;
@@ -83,7 +83,7 @@
             width: 178px;
             height: 43px;
             left: 469px;
-            top: 531px;
+            top: 612px;
 
             background: rgba(196, 196, 196, 0.28);
             border-radius: 20px;
@@ -91,19 +91,16 @@
 
             /* Найти */
 
-            position: absolute;
-            /*width: 63px;
-            height: 23px;
-            left: 527px;
-            top: 541px;*/
 
-            font-family: Montserrat;
+
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: 500;
             font-size: 19px;
             line-height: 23px;
 
             color: #000000;
+
         }
         .recomendation {
             position: absolute;
@@ -112,7 +109,7 @@
             left: 98px;
             top: 600px;
 
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: 500;
             font-size: 23px;
@@ -133,7 +130,7 @@
 
             /* Найти */
 
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: 300;
             font-size: 19px;
@@ -151,7 +148,7 @@
 
             background: rgba(196, 196, 196, 0.28);
             border-radius: 20px;
-            font-family: Montserrat;
+            font-family: Lucida Sans Unicode;
             font-style: normal;
             font-weight: 300;
             font-size: 19px;
@@ -166,6 +163,28 @@
             left: 693px;
             top: 0px;
         }
+        .form-people1 {
+            position: absolute;
+            width: 546px;
+            height: 48px;
+            left: 98px;
+            top: 544px;
+
+            background: rgba(196, 196, 196, 0.28);
+            opacity: 0.3;
+            border-radius: 20px;
+
+
+            /* Найти */
+
+            font-family: Lucida Sans Unicode;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 19px;
+            line-height: 23px;
+
+            color: #000000;
+        }
     </style>
 </head>
 
@@ -179,7 +198,10 @@
         <form method="POST">
             {% csrf_token %}
             <div>
-                <input type="id_group_name" id="id_group_name" class="form-people" placeholder="Название группы" name="group_name">
+                <input type="id_group_name" id="id_group_name" class="form-people" placeholder="  Название группы" name="group_name">
+            </div>
+            <div>
+                <input type="id_max_people" id="id_max_people" class="form-people1" placeholder="  Количество людей для поиска" name="max_people">
             </div>
             <button type="submit" class="submit-form">Найти</button>
         </form>
@@ -192,9 +214,15 @@
             center: [37.6155600, 55.7522200],
             zoom: 9,
         });
+        function randColor() {
+            var r = Math.floor(Math.random() * (256)),
+            g = Math.floor(Math.random() * (256)),
+            b = Math.floor(Math.random() * (256));
+            return '#' + r.toString(16) + g.toString(16) + b.toString(16);
+            }
         console.log(JSON.parse('{{ points|safe }}'));
         for (var i in JSON.parse('{{ points|safe }}')) {
-            var marker=new mapboxgl.Marker({color: 'red'})
+            var marker=new mapboxgl.Marker({color: randColor()})
             .setLngLat([JSON.parse('{{ points|safe }}')[i]["longitude"], JSON.parse('{{ points|safe }}')[i]["latitude"]])
             .addTo(map);
         }
