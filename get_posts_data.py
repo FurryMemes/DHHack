@@ -6,6 +6,7 @@ def get_posts_data(group_id):
     vk_session = vk_api.VkApi(token='1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb')
     points = []
     for id in users_id:
+        posts = []
         try:
             posts = vk_session.method('wall.get', {'owner_id': id, 'count': 25})
             # print('not_bad_error')
