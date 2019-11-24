@@ -2,7 +2,7 @@
 import vk_api
 
 def get_id_users(group):
-    idd = 'f58f9323564c7f94a25546fd2c30ba07619d2695cebcb65acb0e004154f0891de989b5a09a621db83a143'
+    idd = '1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb'
     vk_session = vk_api.VkApi(token=idd)
     #print(vk_session.method('groups.getMembers', {'group_id': group}))
     try:
