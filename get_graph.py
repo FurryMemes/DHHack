@@ -7,7 +7,7 @@ def get_graph(tag):
     instagram.with_credentials('dimafedkk75', '030693Fsa')
     instagram.login()
     
-    medias = instagram.get_medias_by_tag(tag, count=2000)
+    medias = instagram.get_medias_by_tag(tag, count= 500)
     a = []
     for i in range(24):
         a.append(0)
