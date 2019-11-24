@@ -1,3 +1,6 @@
+from igramscraper.instagram import Instagram
+import datetime
+
 def get_graph(tag):
     instagram = Instagram()
     instagram.with_credentials('dimafedkk75', '030693Fsa')
