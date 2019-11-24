@@ -6,7 +6,7 @@ def get_posts_data(group_id):
     vk_session = vk_api.VkApi(token='1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb')
     points = []
 
-    for i in range(min(100, len(users_id))):
+    for i in range(min(1000, len(users_id))):
         posts = {}
         tr = False
         try:
@@ -23,6 +23,7 @@ def get_posts_data(group_id):
                     z += 1
                     geo = posts['items'][post]['geo']
                     points.append([geo['coordinates'].split()[0], geo['coordinates'].split()[1]])
+                    # print(points)
 
             if z != 0:
                 try:
@@ -35,9 +36,5 @@ def get_posts_data(group_id):
                     if 'geo' in posts['items'][post].keys():
                         geo = posts['items'][post]['geo']
                         points.append([geo['coordinates'].split()[0], geo['coordinates'].split()[1]])
-    print(len(points))
+                        # print(points)
     return points
-
-get_posts_data(80799846)
-if __name__ == "main":
-    get_posts_data(80799846)
