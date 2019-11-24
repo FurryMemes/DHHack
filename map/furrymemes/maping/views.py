@@ -13,12 +13,12 @@ def get_id_users(group):
     except:
         return vk_session.method('groups.getMembers', {'group_id': 80799846})['items']
 
-def get_posts_data(group_id, count):
+def get_posts_data(group_id):
     users_id = get_id_users(group_id)
     vk_session = vk_api.VkApi(token='9f79d9a11e43730af251d10434201eefb9a665c637eba51e27466f6c4d7557c399484a80ca5aa29adb765')
     points = []
 
-    for i in range(min(1000, count)):
+    for i in range(min(1000, 100)):
         posts = {}
         tr = False
         try:
@@ -60,14 +60,14 @@ def arr_to_geojson(arr):
     dump = json.dumps(d)
     return dump
 
-def default_map(request):
+"""def default_map(request):
     # TODO: move this token to Django settings from an environment variable
     # found in the Mapbox account settings and getting started instructions
     # see https://www.mapbox.com/account/ under the "Access tokens" section
     if request.method == "POST":
         form = GroupForm(request.POST)
         if form.is_valid():
-            points = arr_to_geojson(get_posts_data(request.POST.get('group_name'), 50))
+            points = arr_to_geojson(get_posts_data(request.POST.get('group_name')))
     else:
         form = GroupForm()
         points = {}
@@ -76,4 +76,22 @@ def default_map(request):
           { 'mapbox_access_token': 'pk.eyJ1IjoibWFzaGF0cmV0MjAwNiIsImEiOiJjazNia2c1amYwajNwM2NsZGpheHB1Y29mIn0.QegkEY39EJLAuB1Y_ba47A',
             'form': form,
             'points': points,
-           })
+           })"""
+
+def default_map(request):
+    # TODO: move this token to Django settings from an environment variable
+    # found in the Mapbox account settings and getting started instructions
+    # see https://www.mapbox.com/account/ under the "Access tokens" section
+    if request.method == "POST":
+        form = GroupForm(request.POST)
+        if form.is_valid():
+            points = arr_to_geojson(get_posts_data(int(request.POST.get('group_name'))))
+    else:
+        form = GroupForm()
+        points = {}
+    mapbox_access_token = 'pk.my_mapbox_access_token'
+    return render(request, 'default.html',
+                  { 'mapbox_access_token': 'pk.eyJ1IjoibWFzaGF0cmV0MjAwNiIsImEiOiJjazNia2c1amYwajNwM2NsZGpheHB1Y29mIn0.QegkEY39EJLAuB1Y_ba47A',
+                    'form': form,
+                    'points': points
+                   })
