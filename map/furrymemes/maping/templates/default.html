@@ -59,13 +59,24 @@
         .form-people {
             position: absolute;
             width: 546px;
-            height: 38px;
+            height: 48px;
             left: 99px;
             top: 474px;
 
             background: rgba(196, 196, 196, 0.28);
             opacity: 0.3;
             border-radius: 20px;
+
+
+            /* Найти */
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 19px;
+            line-height: 23px;
+
+            color: #000000;
         }
         .submit-form {
             position: absolute;
@@ -114,10 +125,22 @@
             width: 549px;
             height: 48px;
             left: 98px;
-            top: 655px;
+            top: 665px;
 
             background: rgba(196, 196, 196, 0.28);
             border-radius: 20px;
+
+
+            /* Найти */
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 19px;
+            line-height: 23px;
+
+            color: #000000;
+
         }
         .gumanitariy {
             position: absolute;
@@ -128,6 +151,13 @@
 
             background: rgba(196, 196, 196, 0.28);
             border-radius: 20px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 19px;
+            line-height: 23px;
+
+            color: #000000;
         }
         .maping {
             position: absolute;
@@ -153,23 +183,23 @@
             </div>
             <button type="submit" class="submit-form">Найти</button>
         </form>
-        <p class="recomendation">Рекомендации для запросов</p>
-        <button type="text" name="button" class="texnari">Технари</button>
-        <button type="text" name="button" class="gumanitariy">Гуманитарий</button>
-        <div id='map' style='position: absolute; width: 759px; height: 1024px; left: 693px; top: 0px;'></div>
+        <div id='map' class= "maping"></div>
         <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFzaGF0cmV0MjAwNiIsImEiOiJjazNia2c1amYwajNwM2NsZGpheHB1Y29mIn0.QegkEY39EJLAuB1Y_ba47A';
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v10',
-            center: [- 77.03, 38.91],
+            center: [37.6155600, 55.7522200],
             zoom: 9,
         });
-        for (int i = 0; i < {{ points }} .length(); i++) {
+        console.log(JSON.parse('{{ points|safe }}'));
+        for (var i in JSON.parse('{{ points|safe }}')) {
             var marker=new mapboxgl.Marker()
-            .setLngLat([Number({{points}}[i]['latitude']), Number({{points}}[i]['longitude']]));
-            .addTo(map); }
+            .setLngLat([JSON.parse('{{ points|safe }}')[i]["longitude"], JSON.parse('{{ points|safe }}')[i]["latitude"]])
+            .addTo(map);
+        }
         </script>
+        <!--<p>{{ points }}</p>-->
     </div>
 </body>
 
