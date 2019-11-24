@@ -1,12 +1,12 @@
 import vk_api
 from get_id_users import get_id_users
 
-def get_posts_data(group_id):
+def get_posts_data(group_id, count):
     users_id = get_id_users(group_id)
     vk_session = vk_api.VkApi(token='1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb')
     points = []
 
-    for i in range(min(1000, len(users_id))):
+    for i in range(min(1000, count)):
         posts = {}
         tr = False
         try:
