@@ -11,8 +11,10 @@ def get_graph(tag):
     a = []
     for i in range(24):
         a.append(0)
-    z = 0
     for posts in medias:
         a[int(str(datetime.datetime.fromtimestamp(posts.created_time))[11:13])] += 1
-        plt.scatter(z, a[z], marker='o', cmap='summer')
-        z += 1
+    for i in range(24):
+        plt.scatter(i,a[i] , marker='o',cmap = "blue")
+    plt.plot([i for i in range(24)],a)
+    plt.show()
+    
