@@ -14,8 +14,5 @@ def get_graph(tag):
     z = 0
     for posts in medias:
         a[int(str(datetime.datetime.fromtimestamp(posts.created_time))[11:13])] += 1
-    #fig = plt.figure()
-    #graph1 = plt.plot([i for i in range(24)],a)
         plt.scatter(z, a[z], marker='o')
         z += 1
-    plt.show(cmap="")
