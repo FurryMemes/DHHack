@@ -194,7 +194,7 @@
         });
         console.log(JSON.parse('{{ points|safe }}'));
         for (var i in JSON.parse('{{ points|safe }}')) {
-            var marker=new mapboxgl.Marker()
+            var marker=new mapboxgl.Marker({color: 'red'})
             .setLngLat([JSON.parse('{{ points|safe }}')[i]["longitude"], JSON.parse('{{ points|safe }}')[i]["latitude"]])
             .addTo(map);
         }
