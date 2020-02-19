@@ -3,7 +3,7 @@ import json
 import pymorphy2
 
 morph = pymorphy2.MorphAnalyzer()
-idd = '1c62622a5c606fe72b7aa7f54af6101552df0a725ab4a53ed1422be0d0f4571674709f47d84fbd45d5dbb'
+idd = '9f79d9a11e43730af251d10434201eefb9a665c637eba51e27466f6c4d7557c399484a80ca5aa29adb765'
 
 tags = ['айти', 'программист', 'кодер', 'хакатон' , 'питон', 'c++', 'код', 'софт', 'бэкап', 'opengl', 'json', 'джаваскрипт', 'дибаг', 'дебаг', 'репозиторий', 'гитхаб', 'репа', 'прода', 'говнокод', 'print', 'helloworld', 'принт', 'фор', 'default', 'windows', 'linux', 'ubuntu', 'убунту', 'сервер', 'взлом', 'сервак', 'хакер', 'development', 'fix', 'developer', 'javascript', '']
 arr = []
@@ -20,11 +20,11 @@ def check_id(id):
 
 if __name__ == '__main__':
     check_id(540540251)
-    for i in range(10):
+    for i in range(20):
         try:
             check_id(i)
         except:
             pass
-    
+    print(arr)
     #with open('output.txt', 'wb') as outfile:
         #json.dump(arr, outfile)
