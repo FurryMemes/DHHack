@@ -25,7 +25,7 @@ SECRET_KEY = 's$72o2pknq)0_ji-dcjhl3y&x6w5=1#zh&7tlf@&u0rqzyc48%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["silaeder.ru"]
+ALLOWED_HOSTS = ["silaeder.ru", "localhost", "127.0.0.1"]
 
 
 # Application definition
